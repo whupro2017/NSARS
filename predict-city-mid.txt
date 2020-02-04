@@ -7,7 +7,7 @@ dev.new(width=7.5,height=3.75,pointsize=8)
 library (deSolve)
 
 offset=1
-detail=1
+detail=0
 
 cityname="Beijing"
 expected=1000
@@ -131,7 +131,7 @@ if (detail) {
 	plot (R * N ~ time, data = output, type='l', ylim = c(0,W * 1.2), col = 'green', ylab = '', axes = FALSE)
 	par (new = TRUE)                                              
 	# recovered hosts over time                                   
-	plot (city[,c("Beijing")] ~ city[,c("Time")], type='o',xlim = c(0,200), ylim = c(0,W * 1.2))
+	plot (city[,c(cityname)] ~ city[,c("Time")], type='o',xlim = c(0,200), ylim = c(0,W * 1.2))
 	# remain on same frame
 	par (new = TRUE) 
 	legend(x=150,y=W,legend=c("Susceptible","Exposed","Infectious","Recovered","Actural"),col=c("blue","pink","red","green","black"), lty=1, cex=0.8)
