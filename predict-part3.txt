@@ -1,0 +1,31 @@
+#times <- seq(1, 20, by = 1)
+K_start <- SS["alpha"]
+R_start <- 1/SS["scale"]
+N0_start <- SS["alpha"]/(exp(SS["xmid"]/SS["scale"])+1)
+# 构建模型的公式
+log_formula <- formula(N_obs ~ K*N0*exp(R*times)/(K + N0*(exp(R*times) - 1)))
+# 拟合模型
+m <- nls(log_formula, start = list(K = K_start, R = R_start, N0 = N0_start))
+# 估计参数
+summary(m)
+    #Formula: N_obs ~ K * N0 * exp(R * times)/(K + N0 * (exp(R * times) - 1))
+    #Parameters:
+    # Estimate Std. Error t value Pr(>|t|)    
+    #K  1.012e+03  3.446e+01  29.366   <2e-16 ***
+    #R  2.010e-01  1.504e-02  13.360   <2e-16 ***
+    #N0 9.600e-01  4.582e-01   2.095   0.0415 *  
+    #---
+    #Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+    #Residual standard error: 49.01 on 48 degrees of freedom
+
+    #Number of iterations to convergence: 1 
+    #Achieved convergence tolerance: 1.537e-06
+
+# 计算拟合优度
+cor(N_obs,predict(m))
+
+#[1] 0.9910316
+
+# 结果可视化
+lines(times, predict(m), col = "red", lty = 2, lwd = 3)

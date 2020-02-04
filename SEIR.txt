@@ -1,0 +1,82 @@
+library(deSolve)
+## 
+## Attaching package: 'deSolve'
+## 
+## The following object is masked from 'package:graphics':
+## 
+##     matplot
+seir_model = function (current_timepoint, state_values, parameters)
+{
+  # create state variables (local variables)
+  S = state_values [1]        # susceptibles
+  E = state_values [2]        # exposed
+  I = state_values [3]        # infectious
+  R = state_values [4]        # recovered
+  
+  with ( 
+    as.list (parameters),     # variable names within parameters can be used 
+         {
+           # compute derivatives
+           dS = (-beta * S * I)
+           dE = (beta * S * I) - (delta * E)
+           dI = (delta * E) - (gamma * I)
+           dR = (gamma * I)
+           
+           # combine results
+           results = c (dS, dE, dI, dR)
+           list (results)
+         }
+    )
+}
+contact_rate = 10                     # number of contacts per day
+transmission_probability = 0.07       # transmission probability 0.07
+infectious_period = 14                 # infectious period
+latent_period = 10                     # latent period
+beta_value = contact_rate * transmission_probability
+gamma_value = 1 / infectious_period
+delta_value = 1 / latent_period
+Ro = beta_value / gamma_value
+parameter_list = c (beta = beta_value, gamma = gamma_value, delta = delta_value)
+W = 43000        # susceptible hosts
+X = 198           # infectious hosts
+Y = 3           # recovered hosts
+Z = 440         # exposed hosts
+N=W+X+Y+Z
+initial_values = c (S = W/N, E = X/N, I = Y/N, R = Z/N)
+timepoints = seq (0, 90, by=1)
+output = lsoda (initial_values, timepoints, seir_model, parameter_list)
+
+plot (I * N ~ time, data = output, type='b', col = 'red') 
+
+# susceptible hosts over time
+plot (S * N ~ time, data = output, type='b', ylim = c(0,10000), col = 'blue', ylab = 'S, E, I, R', main = 'SEIR epidemic') 
+
+# remain on same frame
+par (new = TRUE)    
+
+# exposed hosts over time
+plot (E * N ~ time, data = output, type='b', ylim = c(0,10000), col = 'pink', ylab = '', axes = FALSE)
+
+# remain on same frame
+par (new = TRUE) 
+
+# infectious hosts over time
+plot (I * N ~ time, data = output, type='b', ylim = c(0,10000), col = 'red', ylab = '', axes = FALSE) 
+
+# remain on same frame
+par (new = TRUE)  
+
+# recovered hosts over time
+plot (R * N ~ time, data = output, type='b', ylim = c(0,10000), col = 'green', ylab = '', axes = FALSE)
+
+
+plot (S ~ time, data = output, type='b', col = 'blue')       
+win.graph(width=6,height=4,pointsize=8)
+plot (S ~ time, data = output, type='b', col = 'blue')       
+save.image("E:\\Now\\NSARS\\SEIR.RData")
+plot (E ~ time, data = output, type='b', col = 'pink')  
+Ro
+[1] 3.5
+Ro=5.3
+output = lsoda (initial_values, timepoints, seir_model, parameter_list)
+plot (E ~ time, data = output, type='b', col = 'pink')  

@@ -1,0 +1,25 @@
+library(deSolve)
+# 利用逻辑斯蒂模型生成人口增长的仿真数据，并用nls估计参数
+log_growth <- function(Time, State, Pars) {
+    with(as.list(c(State, Pars)), {
+        dN <- R*N*(1-N/K)
+        return(list(c(dN)))
+    })
+}
+# 逻辑斯蒂增长的参数
+pars  <- c(R = 0.2, K = 1000)
+# 设定初值
+N_ini  <- c(N = 1)
+# 常微分方程的时间阶段（下标t）
+#times <- seq(0, 50, by = 1)
+#times <- sz
+times <- seq(1, 20, by = 1)
+# 常微分方程
+out <- ode(N_ini, times, log_growth, pars)
+# 添加一些随机波动
+#N_obs <- out[, 2]+rnorm(51, 1, 50)
+# 个体数值不能小于1
+#N_obs <- ifelse(N_obs<1, 1, N_obs)
+# 画图
+#plot(times, N_obs)
+N_obs=w6

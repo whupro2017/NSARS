@@ -1,0 +1,26 @@
+library(deSolve)
+log_growth <- function(Time, State, Pars) {
+    with(as.list(c(State, Pars)), {
+        dN <- R*N*(1-N/K)
+        return(list(c(dN)))
+    })
+}
+pars  <- c(R = 0.2, K = 1000)
+N_ini  <- c(N = 1)
+times <- w6[1:17]
+out <- ode(N_ini, times, log_growth, pars)
+N_obs=sz[4:20]
+
+SS <- getInitial(N_obs ~ SSlogis(times, alpha, xmid, scale), data = data.frame(N_obs = N_obs, times = times))
+
+K_start <- SS["alpha"]
+R_start <- 1/SS["scale"]
+N0_start <- SS["alpha"]/(exp(SS["xmid"]/SS["scale"])+1)
+formula(N_obs ~ K*N0*exp(R*times)/(K + N0*(exp(R*times) - 1)))
+m <- nls(log_formula, start = list(K = K_start, R = R_start, N0 = N0_start))
+cor(N_obs,predict(m))
+
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(as.vector(sz)~c(11:30),xlab='time',xlim=c(0,33),ylim=c(0,180),ylab='#People',type='o',col="black")
+par(new=TRUE)
+plot(predict(m,20)[18:20]~c(31:33),xlim=c(0,33),ylim=c(0,180),xlab='time',ylab='#People',type='o',col="red")

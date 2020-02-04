@@ -1,0 +1,62 @@
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(heavy[,c("fullsus")] * rho + heavy[,c("full")])/(heavy[,c("time")] + 23)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~heavy[,c("time")], ylim=c(2.4,3.8), col='blue')
+par(new=TRUE)
+plot(eR2~heavy[,c("time")], ylim=c(2.4,3.8), col='red')
+legend(x=13,y=2.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(heavy[,c("wuhan")] * heavy[,c("fullsus")] * rho / heavy[,c("full")] + heavy[,c("wuhan")])/(heavy[,c("time")] + 23)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~heavy[,c("time")], ylim=c(2.4,3.8), col='blue')
+par(new=TRUE)
+plot(eR2~heavy[,c("time")], ylim=c(2.4,3.8), col='red')
+legend(x=13,y=3.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(heavy[,c("shenzhen")] * heavy[,c("fullsus")] * rho / heavy[,c("full")] + heavy[,c("shenzhen")])/(heavy[,c("time")] + 23)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~heavy[,c("time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~heavy[,c("time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+
+
+#susp=heavy[,c("full")] # + heavy[,c("fulls") * rho
+#lambda=log(heavy[,c("fullsus")] * rho + heavy[,c("full")])/(heavy[,c("time")] + 23)
+
+## The followings are for purposes of testing
+
+rho=41/59
+T2=8.4
+T1=10
+lambda=log(291 + 54 * rho)/43
+eR0=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+
+rho=41/59
+T2=8.4
+T1=10
+lambda=log(9692 + 15238 * rho)/53
+eR0=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+
+rho=41/59
+T2=8.4
+T1=10
+lambda=log(heavy[,c("wuhan")])/(heavy[,c("time")] + 22)
+eR0=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+

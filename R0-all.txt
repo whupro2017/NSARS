@@ -1,0 +1,156 @@
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(total[,c("Total")] * 1.5 * rho + total[,c("Total")])/(total[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~total[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~total[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(org * 1.5 * rho + org)/(c(34,34,34,34,34,34,34,34,34,34) + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~c(34,34,34,34,34,34,34,34,34,34), ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~c(34,34,34,34,34,34,34,34,34,34), ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(total[,c("Hubei")] * 1.5 * rho + total[,c("Hubei")])/(total[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~total[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~total[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Wuhan")] * 1.5 * rho + city[,c("Wuhan")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Beijing")] * 1.5 * rho + city[,c("Beijing")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Shanghai")] * 1.5 * rho + city[,c("Shanghai")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Tianjing")] * 1.5 * rho + city[,c("Tianjing")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Guangzhou")] * 1.5 * rho + city[,c("Guangzhou")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Shenzhen")] * 1.5 * rho + city[,c("Shenzhen")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Chongqing")] * 1.5 * rho + city[,c("Chongqing")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Zhengzhou")] * 1.5 * rho + city[,c("Zhengzhou")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Chengdu")] * 1.5 * rho + city[,c("Chengdu")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+lambda=log(city[,c("Hangzhou")] * 1.5 * rho + city[,c("Hangzhou")])/(city[,c("Time")] + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~city[,c("Time")], ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~city[,c("Time")], ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)

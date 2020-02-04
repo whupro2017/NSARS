@@ -1,0 +1,10 @@
+library(car)
+year=c(1:10)
+phi1=c(1:10)
+phi2=c(1:10)
+phi3=c(1:10)
+USPop=as.vector(phi3) #c(year,phi1,phi2,phi3)
+pop.mod <- nls(population ~ theta1/(1+exp(-(theta2+theta3*year))),start=list(theta1 = 400, theta2 = -49, theta3 = 0.025), data=USPop, trace=T)
+summary(pop.mod)
+
+pop.mod2 <- nls(population ~ SSlogis(year,phi1,phi2,phi3),data=USPop)

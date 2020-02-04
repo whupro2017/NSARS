@@ -1,0 +1,1 @@
+structure(c(NA, NA, NA, NA, NA, NA, NA, NA, NA, 5, 10, 14, 26, 36, 51, 68), .Tsp = c(11, 26, 1), class = "ts")
