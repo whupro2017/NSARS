@@ -63,7 +63,7 @@ timepoints = seq (0, 1, by=1)
 output <- c(time=0, initial_values)
 
 model = c(1, 0.8, 0.6, 0.8, 0.9)
-model = c(1, 1.2, 0.5, 0.6, 0.9)
+model = c(1, 1.315, 0.7, 0.6, 0.9)
 
 adj = 0
 
@@ -88,13 +88,15 @@ for (i in 1:200) {
 offset=8
 
 if (1) {
-	plot(output[1:194,c("I")] * N + output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,200), ylim = c(0,45000), col='red', type='p')
-	par (new = TRUE)
-	plot(output[1:194,c("I")] * N ~ output[7:200,c("time")], xlim = c(0,200), ylim = c(0,45000), col='red', type='l')
-	par (new = TRUE)                              
-    plot(output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,200), ylim = c(0,45000), col='green', type='l')
+    offset = 7
+	#plot(output[1:194,c("I")] * N + output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='p')
+	plot(output[1:(201-offset),c("I")] * N + output[1:(201-offset),c("R")] * N ~ output[offset:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='p')
+	#par (new = TRUE)
+	#plot(output[1:194,c("I")] * N ~ output[7:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='l')
+	#par (new = TRUE)                              
+    #plot(output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,200), ylim = c(0,45000), col='green', type='l')
 	par (new = TRUE)                
-	plot (city[1:194,c(cityname)] ~ output[1:194,c("time")], type='l',xlim = c(0,200), ylim = c(0, 45000))
+	plot (city[1:(201 - offset),c(cityname)] ~ output[1:(201 - offset),c("time")], type='o',xlim = c(0,50), ylim = c(0, 9000))
 } else {
 	scale = 1.2
 
