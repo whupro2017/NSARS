@@ -1,4 +1,3 @@
-dev.new(width=7.5,height=3.75,pointsize=8)
 #PCL implementation of SEIR for CDC@SZ
 #Authors: WH Li, XY Wei
 #Jan 27, 2020
@@ -7,28 +6,48 @@ dev.new(width=7.5,height=3.75,pointsize=8)
 library (deSolve)
 
 offset=1
-detail=0
+detail=1
 
-cityname="Beijing"
-expected=1000
-cityname="Shenzhen"
-expected=1200
-#cityname="Shanghai"
-#expected=800
-#cityname="Guangzhou"
-#expected=850
-#cityname="Chongqing"
-#expected=5350
-#cityname="Zhengzhou"
-#expected=170
-#offset=4
-#cityname="Tianjing"
-#expected=180
-#offset=7
+dev.new(width=7.5,height=3.75,pointsize=8)
+#par(new=TRUE)
 
-#cityname="Shenzhen"
-#expected=1200
-#offset=1
+if (1) {
+	model = c(1, 1.0, 0.4, 0.2, 0.6, 0.8, 0.9)
+	cityname="Beijing"
+	expected=900
+	offset=1
+	cityname="Shanghai"
+	expected=1480
+	offset=2
+	cityname="Guangzhou"
+	expected=1050
+	offset=1
+}
+if (1) {
+	#model = c(1, 1, 0.5, 0.2, 0.6, 0.8, 0.9)
+	model = c(1, 1, 0.75, 0.2, 0.6, 0.8, 0.9)
+	cityname="Chongqing"
+	expected=4350
+	offset=1
+	cityname="Shenzhen"
+	expected=1250
+	offset=1
+}
+if (0) {
+	model = c(1, 1, 0.8, 0.8, 0.6, 0.8, 0.9)
+	cityname="Zhengzhou"
+	expected=195
+	offset=4
+	cityname="Chengdu"
+	expected=200
+	offset=4
+	cityname="Hangzhou"
+	expected=260
+	offset=1
+	cityname="Tianjing"
+	expected=180
+	offset=7
+}
 
 #the function for SEIR
 seir_model = function (current_timepoint, state_values, parameters)
@@ -84,21 +103,23 @@ timepoints = seq (0, 1, by=1)
 
 output <- c(time=0, initial_values)
 
-model = c(1, 0.8, 0.6, 0.8, 0.9)
-
 adj = 0
 
 for (i in 1:200) {
-	if (i <= 27 ) {
+	if (i <= 13 ) {
 		beta_value = model[1] - adj
-	} else if (i <= 42) {
+	} else if (i <= 27 ) {
 		beta_value = model[2] - adj
-	} else if (i <= 77) {
+	} else if (i <= 32) {
 		beta_value = model[3] - adj
-	} else if (i <= 112) {
+	} else if (i <= 42) {
 		beta_value = model[4] - adj
-	} else {
+	} else if (i <= 77) {
 		beta_value = model[5] - adj
+	} else if (i <= 112) {
+		beta_value = model[6] - adj
+	} else {
+		beta_value = model[7] - adj
 	}
 	parameter_list = c (beta = beta_value, gamma = gamma_value, delta = delta_value)
 	stage = lsoda (initial_values, timepoints, seir_model, parameter_list)
@@ -107,9 +128,9 @@ for (i in 1:200) {
 }
 
 if (detail) {
-	plot(output[0:(200 - offset),c("I")] * N + output[0:(200 - offset),c("R")] * N ~ output[(offset + 1):200,c("time")], xlim = c(0,200), ylim = c(0,expected * 1.2), col='red', type='p')
+	plot(output[0:(200 - offset),c("I")] * N + output[0:(200 - offset),c("R")] * N ~ output[(offset + 1):200,c("time")], xlim = c(0,50), ylim = c(0,400), col='red', type='p', main = cityname) #expected * .35
 	par (new = TRUE)                             
-	plot (city[0:length(city[,c(cityname)]),c(cityname)] ~ city[0:length(city[,c(cityname)]),c("Time")], type='o',xlim = c(0,200), ylim = c(0, expected * 1.2))
+	plot (city[0:length(city[,c(cityname)]),c(cityname)] ~ city[0:length(city[,c(cityname)]),c("Time")], type='o',xlim = c(0,50), ylim = c(0, 400))#expected * .35
 } else {
 	scale = 1.2
 
