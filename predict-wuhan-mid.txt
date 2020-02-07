@@ -87,23 +87,23 @@ for (i in 1:200) {
 
 offset=8
 
-if (1) {
+if (0) {
     offset = 7
 	#plot(output[1:194,c("I")] * N + output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='p')
-	plot(output[1:(201-offset),c("I")] * N + output[1:(201-offset),c("R")] * N ~ output[offset:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='p')
+	plot(output[1:(201-offset),c("I")] * N + output[1:(201-offset),c("R")] * N ~ output[offset:200,c("time")], xlim = c(0,100), ylim = c(0,40000), col='red', type='p')
 	#par (new = TRUE)
 	#plot(output[1:194,c("I")] * N ~ output[7:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='l')
 	#par (new = TRUE)                              
     #plot(output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,200), ylim = c(0,45000), col='green', type='l')
 	par (new = TRUE)                
-	plot (city[1:(201 - offset),c(cityname)] ~ output[1:(201 - offset),c("time")], type='o',xlim = c(0,50), ylim = c(0, 9000))
+	plot (city[1:(201 - offset),c(cityname)] ~ output[1:(201 - offset),c("time")], type='o',xlim = c(0,100), ylim = c(0, 40000))
 } else {
 	scale = 1.2
 
 	# plot (I * N ~ time, data = output, type='b', col = 'blue', ylab = 'Infectious', main = 'Wuhan infectious')
 
 	# susceptible hosts over time plot (S * N ~ time, data = output, type='l', col = 'blue', ylab = 'S, E, I, R', main = 'SEIR epidemic') 
-	plot (S * N ~ time, data = output, type='l', ylim = c(0,W * 1.2), col = 'blue', ylab = 'S, E, I, R', main = '武汉累积预测') 
+	plot (S * N ~ time, data = output, type='l', ylim = c(0,W * 1.2), col = 'blue', ylab = 'S, E, I, R', main = cityname) 
 	# remain on same frame
 	par (new = TRUE)    
 	# exposed hosts over time
