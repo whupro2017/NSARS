@@ -17,38 +17,47 @@ if (1) {
 	offset=1
 }
 if (1) {
-	model = c(1, 1.0, 0.4, 0.4, 0.2, 0.6, 0.8, 0.9)
+	model = c(1, 1.0, 1, 0, 0, 0, 0, 0)#0.5, 0.8, 0.9)
+	cityname="Shanghai"
+	expected=950
+	offset=2
+}
+if (1) {
+	model = c(1, 1.0, 0.4, 0.5, 0.2, 0.2, 0.2, 0.1)
 	cityname="Guangzhou"
 	expected=1050
 	offset=1
-	cityname="Shanghai"
-	expected=1480
-	offset=2
 }
-if (0) {
+if (1) {
 	#model = c(1, 1, 0.5, 0.5, 0.2, 0.6, 0.8, 0.9)
-	model = c(1, 1, 0.75, 0.75, 0.2, 0.6, 0.8, 0.9)
+	model = c(1, 1, 1, 0.65, 0, 0, 0, 0)
 	cityname="Shenzhen"
-	expected=1250
-	offset=1
-	cityname="Chongqing"
-	expected=4350
+	expected=1050
 	offset=1
 }
 if (0) {
-	model = c(1, 1, 0.8, 0.8, 0.8, 0.6, 0.8, 0.9)
-	cityname="Tianjing"
-	expected=180
-	offset=7
-	cityname="Zhengzhou"
-	expected=195
-	offset=4
-	cityname="Hangzhou"
-	expected=260
-	offset=1
+	model = c(1, 1.0, 0.8, 0.2, 0, 0, 0, 0)#0.5, 0.8, 0.9)
+	cityname="Chongqing"
+	expected=4650
+	offset=0
+}
+if (1) {
+	model = c(1, 1, 0.5, 0.4, 0.6, 0.4, 0.6, 0.6)
 	cityname="Chengdu"
-	expected=200
+	expected=155
+	offset=2
+	cityname="Zhengzhou"
+	expected=220
 	offset=4
+	cityname="Tianjing"
+	expected=175
+	offset=7
+}
+if (0) {
+	model = c(1, 1, 0.9, 0.7, 0, 0, 0, 0)
+	cityname="Hangzhou"
+	expected=265
+	offset=1
 }
 
 #the function for SEIR
