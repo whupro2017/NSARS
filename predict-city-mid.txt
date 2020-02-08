@@ -17,18 +17,18 @@ if (1) {
 	offset=1
 }
 if (1) {
-	model = c(1, 1.0, 1, 0, 0, 0, 0, 0)#0.5, 0.8, 0.9)
+	model = c(1, 1.0, 1, -0.2, 0, 0, 0, 0)#0.5, 0.8, 0.9)
 	cityname="Shanghai"
-	expected=950
+	expected=1000
 	offset=2
 }
-if (1) {
+if (0) {
 	model = c(1, 1.0, 0.4, 0.5, 0.2, 0.2, 0.2, 0.1)
 	cityname="Guangzhou"
 	expected=1050
 	offset=1
 }
-if (1) {
+if (0) {
 	#model = c(1, 1, 0.5, 0.5, 0.2, 0.6, 0.8, 0.9)
 	model = c(1, 1, 1, 0.65, 0, 0, 0, 0)
 	cityname="Shenzhen"
@@ -41,7 +41,7 @@ if (0) {
 	expected=4650
 	offset=0
 }
-if (1) {
+if (0) {
 	model = c(1, 1, 0.5, 0.4, 0.6, 0.4, 0.6, 0.6)
 	cityname="Chengdu"
 	expected=155

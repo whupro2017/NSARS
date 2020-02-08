@@ -62,8 +62,8 @@ timepoints = seq (0, 1, by=1)
 
 output <- c(time=0, initial_values)
 
-model = c(1, 0.8, 0.6, 0.8, 0.9)
-model = c(1, 1.315, 0.7, 0.6, 0.9)
+model = c(1, 0.8, 0.8, 0.6, 0.8, 0.9)
+model = c(1, 1.315, 1, 1, 1, 0.5)
 
 adj = 0
 
@@ -72,12 +72,14 @@ for (i in 1:200) {
 		beta_value = model[1] - adj
 	} else if (i <= 28) {
 		beta_value = model[2] - adj
-	} else if (i <= 63) {
+	} else if (i <= 30) {
 		beta_value = model[3] - adj
-	} else if (i <= 98) {
+	} else if (i <= 63) {
 		beta_value = model[4] - adj
-	} else {
+	} else if (i <= 98) {
 		beta_value = model[5] - adj
+	} else {
+		beta_value = model[6] - adj
 	}
 	parameter_list = c (beta = beta_value, gamma = gamma_value, delta = delta_value)
 	stage = lsoda (initial_values, timepoints, seir_model, parameter_list)
@@ -87,7 +89,7 @@ for (i in 1:200) {
 
 offset=8
 
-if (0) {
+if (1) {
     offset = 7
 	#plot(output[1:194,c("I")] * N + output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='p')
 	plot(output[1:(201-offset),c("I")] * N + output[1:(201-offset),c("R")] * N ~ output[offset:200,c("time")], xlim = c(0,100), ylim = c(0,40000), col='red', type='p', main = cityname)
