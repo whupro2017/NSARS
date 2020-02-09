@@ -16,24 +16,26 @@ if (1) {
 	expected=1000
 	offset=1
 }
-if (1) {
+if (0) {
 	model = c(1, 1.0, 1, -0.2, 0, 0, 0, 0)#0.5, 0.8, 0.9)
 	cityname="Shanghai"
 	expected=1000
 	offset=2
 }
 if (0) {
-	model = c(1, 1.0, 0.4, 0.5, 0.2, 0.2, 0.2, 0.1)
+	#model = c(1, 1.0, 0.4, 0.5, 0.2, 0.2, 0.2, 0.1)
+	model = c(1, 1.0, 0.5, 0.5, -0.08, 0.1, 0, 0)
 	cityname="Guangzhou"
-	expected=1050
+	expected=1100
 	offset=1
 }
 if (0) {
 	#model = c(1, 1, 0.5, 0.5, 0.2, 0.6, 0.8, 0.9)
-	model = c(1, 1, 1, 0.65, 0, 0, 0, 0)
+	#model = c(1, 1, 1, 0.55, 0.3, 0.2, 0.1, 0)
+	model = c(1, 1, 0.5, 1, 0, 0, 0.1, 0.1)
 	cityname="Shenzhen"
-	expected=1050
-	offset=1
+	expected=1080
+	offset=0
 }
 if (0) {
 	model = c(1, 1.0, 0.8, 0.2, 0, 0, 0, 0)#0.5, 0.8, 0.9)
@@ -141,9 +143,9 @@ for (i in 1:200) {
 }
 
 if (detail) {
-	plot(output[0:(200 - offset),c("I")] * N + output[0:(200 - offset),c("R")] * N ~ output[(offset + 1):200,c("time")], xlim = c(0,50), ylim = c(0,500), col='red', type='p', main = cityname) #expected * .35
+	plot(output[0:(200 - offset),c("I")] * N + output[0:(200 - offset),c("R")] * N ~ output[(offset + 1):200,c("time")], xlim = c(0,50), ylim = c(0,600), col='red', type='p', main = cityname) #expected * .35
 	par (new = TRUE)                             
-	plot (city[0:length(city[,c(cityname)]),c(cityname)] ~ city[0:length(city[,c(cityname)]),c("Time")], type='o',xlim = c(0,50), ylim = c(0, 500))#expected * .35
+	plot (city[0:length(city[,c(cityname)]),c(cityname)] ~ city[0:length(city[,c(cityname)]),c("Time")], type='o',xlim = c(0,50), ylim = c(0, 600))#expected * .35
 } else {
 	scale = 1.2
 
