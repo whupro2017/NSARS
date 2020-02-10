@@ -87,18 +87,13 @@ for (i in 1:200) {
     output <- rbind(output, c(time=i, initial_values))
 }
 
-offset=8
+offset=1
 
 if (1) {
     offset = 7
-	#plot(output[1:194,c("I")] * N + output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='p')
 	plot(output[1:(201-offset),c("I")] * N + output[1:(201-offset),c("R")] * N ~ output[offset:200,c("time")], xlim = c(0,100), ylim = c(0,40000), col='red', type='p', main = cityname)
-	#par (new = TRUE)
-	#plot(output[1:194,c("I")] * N ~ output[7:200,c("time")], xlim = c(0,50), ylim = c(0,9000), col='red', type='l')
-	#par (new = TRUE)                              
-    #plot(output[1:194,c("R")] * N ~ output[7:200,c("time")], xlim = c(0,200), ylim = c(0,45000), col='green', type='l')
 	par (new = TRUE)                
-	plot (city[1:(201 - offset),c(cityname)] ~ output[1:(201 - offset),c("time")], type='o',xlim = c(0,100), ylim = c(0, 40000))
+	plot (city[1:length(city[,c(cityname)]),c(cityname)] ~ city[1:length(city[,c(cityname)]),c("Time")], type='o',xlim = c(0,100), ylim = c(0, 40000))
 } else {
 	scale = 1.2
 

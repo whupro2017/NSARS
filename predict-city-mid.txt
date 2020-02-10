@@ -11,49 +11,54 @@ detail=1
 dev.new(width=7.5,height=3.75,pointsize=8)
 #par(new=TRUE)
 if (1) {
-	model = c(1, 1.0, 0.4, 0.4, 0.2, 0.6, 0.8, 0.9)
+	#model = c(1, 1.0, 0.4, 0.4, 0.2, 0.6, 0.6, 0.8, 0.9)
+	model = c(1, 1.0, 0.45, 0.3, 0.25, -0.16, 0.1, 0.1, 0.1, 0.1, 0.1)
 	cityname="Beijing"
 	expected=1000
 	offset=1
 }
-if (0) {
-	model = c(1, 1.0, 1, -0.2, 0, 0, 0, 0)#0.5, 0.8, 0.9)
+if (1) {
+	model = c(1, 1.0, 0.65, 0.45, -0.18, -0.1, 0.2, 0.2, 0.2, 0.2, 0.2)#0.5, 0.8, 0.9)
 	cityname="Shanghai"
 	expected=1000
 	offset=2
 }
-if (0) {
-	#model = c(1, 1.0, 0.4, 0.5, 0.2, 0.2, 0.2, 0.1)
-	model = c(1, 1.0, 0.5, 0.5, -0.08, 0.1, 0, 0)
+if (1) {
+	#model = c(1, 1.0, 0.4, 0.5, 0.2, 0.2, 0.2, 0.2, 0.1)
+	#model = c(1, 1.0, 0.5, 0.5, -0.08, 0, 0, 0, 0)
+	model = c(1, 1.0, 0.4, 0.85, -0.2, -0.12, 0.1, 0.1, 0.5, 0.5, 0.5)
 	cityname="Guangzhou"
 	expected=1100
 	offset=1
 }
-if (0) {
-	#model = c(1, 1, 0.5, 0.5, 0.2, 0.6, 0.8, 0.9)
-	#model = c(1, 1, 1, 0.55, 0.3, 0.2, 0.1, 0)
-	model = c(1, 1, 0.5, 1, 0, 0, 0.1, 0.1)
+if (1) {
+	#model = c(1, 1, 0.5, 0.5, 0.2, 0.6, 0.6, 0.8, 0.9)
+	#model = c(1, 1, 1, 0.55, 0.3, 0.2, 0.2, 0.1, 0)
+	model = c(1, 1, 0.4, 1.56, -0.15, -0.15, 0.1, 0.1, 0.5, 0.5, 0.5)
 	cityname="Shenzhen"
-	expected=1080
+	expected=1000
 	offset=0
 }
+if (1) {
+	model = c(1, 1, 0.15, 0.15, 0.25, 0.25, 0.3, 0.3, 0.3, 0.6, 0.6)
+	cityname="Tianjing"
+	expected=175
+	offset=7
+}
 if (0) {
-	model = c(1, 1.0, 0.8, 0.2, 0, 0, 0, 0)#0.5, 0.8, 0.9)
+	model = c(1, 1.0, 0.8, 0.2, 0, 0, 0, 0, 0, 0)#0.5, 0.8, 0.9)
 	cityname="Chongqing"
 	expected=4650
 	offset=0
 }
 if (0) {
-	model = c(1, 1, 0.5, 0.4, 0.6, 0.4, 0.6, 0.6)
-	cityname="Chengdu"
-	expected=155
-	offset=2
+	model = c(1, 1, 0.45, 0.35, 0.3, 0.3, 0.3, 0.3, 0.3, 0.6, 0.6)
 	cityname="Zhengzhou"
 	expected=220
 	offset=4
-	cityname="Tianjing"
-	expected=175
-	offset=7
+	cityname="Chengdu"
+	expected=180
+	offset=2
 }
 if (0) {
 	model = c(1, 1, 0.9, 0.7, 0, 0, 0, 0)
@@ -127,14 +132,20 @@ for (i in 1:200) {
 		beta_value = model[3] - adj
 	} else if (i <= 32) {
 		beta_value = model[4] - adj
-	} else if (i <= 42) {
+	} else if (i <= 36) {
 		beta_value = model[5] - adj
-	} else if (i <= 77) {
+	} else if (i <= 42) {  
 		beta_value = model[6] - adj
-	} else if (i <= 112) {
+	} else if (i <= 52) {  
 		beta_value = model[7] - adj
-	} else {
+	} else if (i <= 62) {  
 		beta_value = model[8] - adj
+	} else if (i <= 77) {  
+		beta_value = model[9] - adj
+	} else if (i <= 112) { 
+		beta_value = model[10] - adj
+	} else {
+		beta_value = model[11] - adj
 	}
 	parameter_list = c (beta = beta_value, gamma = gamma_value, delta = delta_value)
 	stage = lsoda (initial_values, timepoints, seir_model, parameter_list)
