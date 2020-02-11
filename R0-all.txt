@@ -14,6 +14,21 @@ rho=41/59
 T1=8.4
 T2=10
 org=c(16902,326,295,91,307,366,468,130,123,155)
+dt=41
+idx=c(dt,dt,dt,dt,dt,dt,dt,dt,dt,dt)
+lambda=log(org * 1.5 * rho + org)/(idx + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~idx, ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~idx, ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+org=c(16902,326,295,91,307,366,468,130,123,155)
 dt=40
 idx=c(dt,dt,dt,dt,dt,dt,dt,dt,dt,dt)
 lambda=log(org * 1.5 * rho + org)/(idx + 30)
