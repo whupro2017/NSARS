@@ -49,7 +49,7 @@ Ro = beta_value / gamma_value
 parameter_list = c (beta = beta_value, gamma = gamma_value, delta = delta_value)
 
 #Set initial S,E,I,R values
-W = 40000        # susceptible hosts
+W = 65000        # susceptible hosts
 X = 41           # infectious hosts
 Y = 0            # recovered hosts
 Z = 120          # exposed hosts
@@ -63,7 +63,7 @@ timepoints = seq (0, 1, by=1)
 output <- c(time=0, initial_values)
 
 model = c(1, 0.8, 0.8, 0.6, 0.8, 0.9)
-model = c(1, 1.315, 1, 1, 1, 0.5)
+model = c(1, 0.7, 0.5, 1.33, 0, 0)
 
 adj = 0
 
@@ -87,13 +87,15 @@ for (i in 1:200) {
     output <- rbind(output, c(time=i, initial_values))
 }
 
+uppers=65000
+limits=50
 offset=1
 
 if (1) {
-    offset = 7
-	plot(output[1:(201-offset),c("I")] * N + output[1:(201-offset),c("R")] * N ~ output[offset:200,c("time")], xlim = c(0,100), ylim = c(0,40000), col='red', type='p', main = cityname)
+    offset = 1
+	plot(output[1:(201-offset),c("I")] * N + output[1:(201-offset),c("R")] * N ~ output[offset:200,c("time")], xlim = c(0,limits), ylim = c(0,uppers), col='red', type='p', main = cityname)
 	par (new = TRUE)                
-	plot (city[1:length(city[,c(cityname)]),c(cityname)] ~ city[1:length(city[,c(cityname)]),c("Time")], type='o',xlim = c(0,100), ylim = c(0, 40000))
+	plot (city[1:length(city[,c(cityname)]),c(cityname)] ~ city[1:length(city[,c(cityname)]),c("Time")], type='o',xlim = c(0,limits), ylim = c(0, uppers))
 } else {
 	scale = 1.2
 

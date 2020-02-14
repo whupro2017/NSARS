@@ -10,6 +10,37 @@ par(new=TRUE)
 plot(eR2~total[,c("Time")], ylim=c(1.4,2.3), col='red')
 legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
 
+
+rho=41/59
+T1=8.4
+T2=10
+org=c(35991,366,318,119,328,400,529,142,135,165)
+dt=44
+idx=c(dt,dt,dt,dt,dt,dt,dt,dt,dt,dt)
+lambda=log(org * 1.5 * rho + org)/(idx + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~idx, ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~idx, ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
+rho=41/59
+T1=8.4
+T2=10
+org=c(32994,352,313,112,323,386,518,141,131,162)
+dt=43
+idx=c(dt,dt,dt,dt,dt,dt,dt,dt,dt,dt)
+lambda=log(org * 1.5 * rho + org)/(idx + 30)
+eR1=1+lambda*T1+rho*(1-rho)*(lambda*T1)*(lambda*T1)
+eR2=1+lambda*T2+rho*(1-rho)*(lambda*T2)*(lambda*T2)
+dev.new(width=7.5,height=3.75,pointsize=8)
+plot(eR1~idx, ylim=c(1.4,2.3), col='blue')
+par(new=TRUE)
+plot(eR2~idx, ylim=c(1.4,2.3), col='red')
+legend(x=13,y=1.6,legend=c("Tg=8.4","Tg=10"),col=c("blue","red"), lty=1, cex=0.8)
+
 rho=41/59
 T1=8.4
 T2=10
