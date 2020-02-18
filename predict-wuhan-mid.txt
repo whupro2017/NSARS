@@ -49,7 +49,7 @@ Ro = beta_value / gamma_value
 parameter_list = c (beta = beta_value, gamma = gamma_value, delta = delta_value)
 
 #Set initial S,E,I,R values
-W = 65000        # susceptible hosts
+W = 59500        # susceptible hosts
 X = 41           # infectious hosts
 Y = 0            # recovered hosts
 Z = 120          # exposed hosts
@@ -63,7 +63,7 @@ timepoints = seq (0, 1, by=1)
 output <- c(time=0, initial_values)
 
 model = c(1, 0.8, 0.8, 0.6, 0.8, 0.9)
-model = c(1, 0.7, 0.5, 1.33, 0, 0)
+model = c(1, 0.8, 0.6, 1.05, 1.55, 0.8, 0.6, 0.45, 0, 0)
 
 adj = 0
 
@@ -74,12 +74,20 @@ for (i in 1:200) {
 		beta_value = model[2] - adj
 	} else if (i <= 30) {
 		beta_value = model[3] - adj
-	} else if (i <= 63) {
+	} else if (i <= 33) {
 		beta_value = model[4] - adj
-	} else if (i <= 98) {
+	} else if (i <= 38) {
 		beta_value = model[5] - adj
-	} else {
+	} else if (i <= 43) {
 		beta_value = model[6] - adj
+	} else if (i <= 45) {
+		beta_value = model[7] - adj
+	} else if (i <= 63) {
+		beta_value = model[8] - adj
+	} else if (i <= 98) {
+		beta_value = model[9] - adj
+	} else {
+		beta_value = model[10] - adj
 	}
 	parameter_list = c (beta = beta_value, gamma = gamma_value, delta = delta_value)
 	stage = lsoda (initial_values, timepoints, seir_model, parameter_list)
@@ -88,7 +96,7 @@ for (i in 1:200) {
 }
 
 uppers=65000
-limits=50
+limits=65
 offset=1
 
 if (1) {
